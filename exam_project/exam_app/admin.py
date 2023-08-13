@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PlaceType, Place, City
+from .models import PlaceType, Place, PlaceDetail, City
 
 @admin.register(PlaceType)
 class PlaceTypeAdmin(admin.ModelAdmin):

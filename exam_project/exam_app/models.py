@@ -7,7 +7,7 @@ class Place(models.Model):
 
     name = models.CharField('Название', max_length=150)
     description = models.TextField('Описание')
-    category = models.ForeignKey(PlaceType, on_delete=models.CASCADE, related_name='places')
+    category = models.ForeignKey(PlaceType, on_delete=models.CASCADE)
 
     address = models.CharField('Адрес', max_length=200)
     city = models.CharField("Город", max_length=100)
@@ -24,6 +24,9 @@ class City(models.Model):
     name = models.CharField('Название', max_length=150)
 
     
-# class Category(models):
+class Category(models.Model):
+    category = models.ForeignKey(PlaceType, on_delete=models.CASCADE, related_name='places')
 
-#     category = models.ForeignKey(PlaceType, on_delete=models.CASCADE, related_name='places')
+class PlaceDetail(models.Model):
+    place = models.ForeignKey(Place, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
